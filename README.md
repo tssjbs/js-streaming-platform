@@ -6,7 +6,7 @@
 
 | Item | Link / location |
 |------|------------------|
-| **GitHub (submit here)** | `https://github.com/jeanrussosaus/<your-repo-name>` — push this folder when ready |
+| **GitHub (submit here)** | https://github.com/tssjbs/js-streaming-platform |
 | **Live demo (local)** | http://127.0.0.1:8790/ after `python -m src.server` |
 | **Execution evidence (graded)** | This README § below + [`docs/execution_evidence.txt`](docs/execution_evidence.txt) |
 | **5–7 min talk track** | [`docs/PRESENTATION_GUIDE.md`](docs/PRESENTATION_GUIDE.md) |
@@ -417,4 +417,4 @@ python scripts/run_evaluation.py
 
 ## License / context
 
-Course portfolio project for AI110. Separate from work repos (`tssjbs`, Elpis Express). Intended public GitHub: **`jeanrussosaus`** when submitted.
+Course portfolio project for AI110. Public repo: **https://github.com/tssjbs/js-streaming-platform** (GitHub user **tssjbs**, sign-in **jeanrussosaus@gmail.com**). Separate from Elpis Express (`elpisexpressadmin-svg`).

@@ -4,7 +4,7 @@
 **Evolution of:** Module 3 — Music Recommender Simulation (VibeFinder)  
 **Base repo:** `tssjbs/ai110-module3show-musicrecommendersimulation-starter`  
 **Agent pattern reference:** `codepath/ai110-module4tinker-docubot-starter`  
-**GitHub target (later):** `jeanrussosaus` (personal / course) — separate from **tssjbs** work repos and Elpis Cloudflare  
+**GitHub:** https://github.com/tssjbs/js-streaming-platform (`tssjbs` / jeanrussosaus@gmail.com) — separate from Elpis (`elpisexpressadmin-svg`)  
 **Local workspace:** `AI110/AI1110/js-streaming-platform`
 
 ## Problem (Engineer's Pitch)
@@ -62,7 +62,7 @@ js-streaming-platform/
 
 1. CodePath **step-by-step** instructions (we implement in order).  
 2. Screenshot / rubric for **PowerPoint pitch** (Problem, Logic, Reliability, Reflection — 4 min demo + 1 min feedback).  
-3. When ready: create empty public repo on **jeanrussosaus** and we set `origin` + push.
+3. ~~Create repo and push~~ — live at **tssjbs/js-streaming-platform**.
 
 ## Environment
 
