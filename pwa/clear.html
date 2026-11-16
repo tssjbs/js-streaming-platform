@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clear old cache — JS Streaming Music</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0a0a0a;
+        color: #f5f5f5;
+        padding: 2rem;
+        max-width: 520px;
+        margin: auto;
+      }
+      a {
+        color: #cbef43;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clearing old Shekinah cache…</h1>
+    <p id="msg">Working…</p>
+    <p><a href="/">Open JS Streaming Music</a></p>
+    <script>
+      (async () => {
+        const msg = document.getElementById("msg");
+        const regs = await navigator.serviceWorker?.getRegistrations?.();
+        let n = 0;
+        for (const r of regs || []) {
+          await r.unregister();
+          n++;
+        }
+        const keys = await caches?.keys?.();
+        for (const k of keys || []) {
+          await caches.delete(k);
+        }
+        msg.textContent =
+          "Unregistered " +
+          n +
+          " service worker(s) and cleared caches. Use port 8790: http://127.0.0.1:8790/";
+        setTimeout(() => {
+          location.href = "http://127.0.0.1:8790/";
+        }, 1500);
+      })();
+    </script>
+  </body>
+</html>

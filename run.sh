@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+if [ ! -d .venv ]; then
+  python3 -m venv .venv
+fi
+# shellcheck source=/dev/null
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python scripts/make_icon.py
+python -m pytest -q
+export JS_STREAM_PORT=8790
+echo "Open http://127.0.0.1:8790"
+python -m src.server

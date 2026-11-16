@@ -1,0 +1,12 @@
+[
+  {
+    "id": "syn-focus-rule",
+    "tags": ["focus", "lofi", "chill", "study", "coding"],
+    "text": "Synthetic curator note: For focus sessions, rank instrumental lofi with acousticness above 0.65 before energetic pop."
+  },
+  {
+    "id": "syn-workout-rule",
+    "tags": ["workout", "gym", "energy", "happy", "pop"],
+    "text": "Synthetic curator note: Workout queries favor pop and danceable rows with energy above 0.75."
+  }
+]

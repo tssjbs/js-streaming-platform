@@ -1,0 +1,1 @@
+"""Policy checks: external URLs, query safety, playlist constraints."""

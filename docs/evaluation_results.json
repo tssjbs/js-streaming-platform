@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-11-16T06:43:24.272515+00:00",
+  "automated_tests": {
+    "passed": 12,
+    "failed": 0,
+    "pytest_exit_code": 0
+  },
+  "confidence_scores": {
+    "average": 0.79,
+    "min": 0.71,
+    "max": 0.91,
+    "by_profile": [
+      {
+        "profile": "chill_lofi",
+        "top_title": "Library Rain",
+        "confidence_score": 0.91,
+        "verification_passed": true,
+        "reranked": false
+      },
+      {
+        "profile": "high_energy_pop",
+        "top_title": "Sunrise City",
+        "confidence_score": 0.74,
+        "verification_passed": true,
+        "reranked": false
+      },
+      {
+        "profile": "niche_genre",
+        "top_title": "Winter Suite No. 3",
+        "confidence_score": 0.71,
+        "verification_passed": true,
+        "reranked": false
+      }
+    ]
+  },
+  "logging": {
+    "file": "logs/js_streaming.log",
+    "api": "/api/logs/recent"
+  }
+}

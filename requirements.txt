@@ -1,0 +1,8 @@
+pandas
+pytest
+streamlit
+tabulate
+fastapi
+uvicorn[standard]
+pydantic
+httpx

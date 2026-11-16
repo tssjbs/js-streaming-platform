@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="JS Streaming Music" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>JS Streaming Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="rail" aria-label="Main menu">
+        <div class="rail-brand">
+          <span class="logo-wave" aria-hidden="true"></span>
+          <div class="rail-titles">
+            <strong>JS Music</strong>
+            <span>Streaming Music</span>
+          </div>
+        </div>
+
+        <nav class="rail-nav">
+          <p class="rail-label">Your space</p>
+          <button type="button" class="rail-item active" data-view="home">
+            <span class="ico" aria-hidden="true">⌂</span> Home
+          </button>
+          <button type="button" class="rail-item" data-view="discover">
+            <span class="ico" aria-hidden="true">◎</span> Discover
+          </button>
+          <button type="button" class="rail-item" data-view="genres">
+            <span class="ico" aria-hidden="true">▦</span> Genres
+          </button>
+          <button type="button" class="rail-item" data-view="artists">
+            <span class="ico" aria-hidden="true">♫</span> Artists
+          </button>
+          <button type="button" class="rail-item" data-view="library">
+            <span class="ico" aria-hidden="true">▤</span> My Library
+          </button>
+          <button type="button" class="rail-item" data-view="favorites">
+            <span class="ico" aria-hidden="true">♥</span> Favorites
+          </button>
+        </nav>
+
+        <div class="rail-playlists">
+          <p class="rail-label">Your playlists</p>
+          <ul id="sidebar-playlists"></ul>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="topbar-title">
+            <p class="eyebrow" id="page-eyebrow">Good music. Every mood.</p>
+            <h1 id="page-title">Home</h1>
+          </div>
+          <div class="search-wrap">
+            <span class="search-ico" aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Songs, artists, or a mood…" autocomplete="off" />
+          </div>
+          <button type="button" class="account" title="Account">JS</button>
+        </header>
+
+        <main class="content" id="content">
+          <div id="encoder-stage" class="encoder-stage" hidden aria-hidden="true"></div>
+          <p id="encoder-status" class="sr-only" aria-live="polite"></p>
+
+          <!-- HOME -->
+          <section id="view-home" class="panel active">
+            <div class="hero">
+              <div class="hero-copy">
+                <p class="eyebrow lime">The JS Daily Mix</p>
+                <h2>Your world. <span class="lime">On repeat.</span></h2>
+                <p class="hero-sub">Fresh finds. Familiar feelings. A soundtrack for every side of you.</p>
+                <div class="hero-actions">
+                  <button type="button" class="btn-play" id="hero-play">▶ Play the mix</button>
+                  <button type="button" class="btn-text" data-goto="discover">Explore music →</button>
+                </div>
+              </div>
+              <div class="hero-art">
+                <img src="/assets/hero-vinyl.jpg" alt="" />
+              </div>
+            </div>
+
+            <div class="chip-row" id="mood-chips"></div>
+
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Made for the moment</p>
+                <h3>Featured playlists</h3>
+              </div>
+              <button type="button" class="btn-text">View all →</button>
+            </div>
+            <div class="cards-row" id="featured-cards"></div>
+
+            <div class="section-head">
+              <h3>Recently played</h3>
+            </div>
+            <div class="track-table" id="recent-tracks"></div>
+
+            <div class="section-head"><h3>New releases</h3></div>
+            <div class="cards-row compact" id="new-releases"></div>
+
+            <div class="section-head"><h3>Trending songs</h3></div>
+            <div class="track-table" id="trending-tracks"></div>
+          </section>
+
+          <!-- DISCOVER -->
+          <section id="view-discover" class="panel">
+            <p class="eyebrow lime">AI + RAG</p>
+            <h2>Discover your next favorite</h2>
+            <div class="discover-form">
+              <input id="query" placeholder="chill lofi for focus" />
+              <div class="mini-grid">
+                <input id="genre" value="lofi" placeholder="Genre" />
+                <input id="mood" value="chill" placeholder="Mood" />
+                <input id="energy" type="number" min="0" max="1" step="0.05" value="0.38" />
+              </div>
+              <label class="check"><input id="acoustic" type="checkbox" checked /> Acoustic</label>
+              <button type="button" class="btn-play" id="discover-btn">Run recommendations</button>
+            </div>
+            <p id="plan-steps" class="muted small"></p>
+            <div id="rec-list" class="rec-list"></div>
+            <div id="hitl-panel" class="hitl" hidden>
+              <p id="proposal-note"></p>
+              <ul id="rag-snips"></ul>
+              <div class="hitl-actions">
+                <button type="button" class="btn-play" id="approve-btn">Approve playlist</button>
+                <button type="button" class="btn-ghost" id="reject-btn">Reject</button>
+              </div>
+            </div>
+          </section>
+
+          <section id="view-genres" class="panel"><div id="genres-grid" class="cards-row"></div></section>
+          <section id="view-artists" class="panel"><div id="artists-grid" class="artist-grid"></div></section>
+          <section id="view-library" class="panel">
+            <h2>My Library</h2>
+            <p class="muted">Approved AI playlists and saved mixes</p>
+            <div id="library-list" class="track-table"></div>
+          </section>
+          <section id="view-favorites" class="panel">
+            <h2>Favorites</h2>
+            <div id="favorites-list" class="track-table"></div>
+          </section>
+        </main>
+
+        <nav class="mob-nav" aria-label="Mobile menu">
+          <button type="button" data-view="home" class="active">Home</button>
+          <button type="button" data-view="discover">Discover</button>
+          <button type="button" data-view="library">Library</button>
+          <button type="button" data-view="favorites">♥</button>
+        </nav>
+      </div>
+
+      <footer class="player-bar" id="player-bar">
+        <div class="pb-track">
+          <div class="pb-art" id="pb-art"></div>
+          <div>
+            <p class="pb-title" id="pb-title">—</p>
+            <p class="pb-artist" id="pb-artist">JS Studio · select a track</p>
+          </div>
+          <button type="button" class="pb-fav" id="pb-fav" title="Favorite">♡</button>
+        </div>
+        <div class="pb-controls">
+          <div class="pb-transport">
+            <button type="button" class="pc" id="btn-shuffle" title="Shuffle">⇄</button>
+            <button type="button" class="pc" id="btn-prev" title="Previous">⏮</button>
+            <button type="button" class="pc play" id="btn-play" title="Play">▶</button>
+            <button type="button" class="pc" id="btn-next" title="Next">⏭</button>
+            <button type="button" class="pc" id="btn-repeat" title="Repeat">↻</button>
+          </div>
+          <div class="pb-progress">
+            <span id="time-cur">0:00</span>
+            <input type="range" id="seek" min="0" max="1000" value="0" />
+            <span id="time-end">0:00</span>
+          </div>
+        </div>
+        <div class="pb-vol">
+          <span aria-hidden="true">🔊</span>
+          <input type="range" id="volume" min="0" max="100" value="80" />
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>

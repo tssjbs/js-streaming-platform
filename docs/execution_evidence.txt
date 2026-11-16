@@ -1,0 +1,78 @@
+=== 1 HEALTH ===
+{"ok":true,"service":"js-streaming-music","tracks":18,"playlist_size":0,"features":["rag","agent","guardrails","hitl","reliability_tests"]}
+=== 2 DISCOVER (input) ===
+{"query":"chill lofi focus","genre":"lofi","mood":"chill","energy":0.38,"k":2}
+=== 2 DISCOVER (output abridged) ===
+{
+  "proposal_id": "c98dccaf",
+  "status": "pending",
+  "confidence_score": 0.91,
+  "rag_sources_indexed": 25,
+  "tool_trace_preview": [
+    "tool_guard_query",
+    "tool_retrieve",
+    "tool_rank",
+    "tool_focus_filter",
+    "tool_verify"
+  ],
+  "rag_chunk_ids": [
+    "README.md",
+    "model_card.md",
+    "song-2",
+    "song-4"
+  ],
+  "top_recommendation": {
+    "id": 4,
+    "title": "Library Rain",
+    "artist": "Paper Lanterns",
+    "genre": "lofi",
+    "mood": "chill",
+    "score": 5.46,
+    "explanation": "For \u201cchill lofi focus\u201d, we used curator notes (focus lofi chill study coding Synthetic curator note: For focus sessio\u2026) to suggest Library Rain by Paper Lanterns \u2014 mode=balanced; genre match (+2.0); mood match (+1.0); energy similarity (+1.46); acoustic bonus (+0.5); valence similarity (+0.50)",
+    "stream_url": "/media/track_4.wav"
+  },
+  "verification": {
+    "top_score": 5.46,
+    "passed": true,
+    "reranked": false,
+    "threshold": 1.5
+  }
+}
+=== 3 HITL APPROVE ===
+{
+    "ok": true,
+    "playlist": [
+        {
+            "id": 4,
+            "title": "Library Rain",
+            "artist": "Paper Lanterns",
+            "genre": "lofi",
+            "mood": "chill",
+            "score": 5.46,
+            "explanation": "For \u201cchill lofi focus\u201d, we used curator notes (focus lofi chill study coding Synthetic curator note: For focus sessio\u2026) to suggest Library Rain by Paper Lanterns \u2014 mode=balanced; genre match (+2.0); mood match (+1.0); energy similarity (+1.46); acoustic bonus (+0.5); valence similarity (+0.50)",
+            "stream_url": "/media/track_4.wav"
+        },
+        {
+            "id": 2,
+            "title": "Midnight Coding",
+            "artist": "LoRoom",
+            "genre": "lofi",
+            "mood": "chill",
+            "score": 4.92,
+            "explanation": "For \u201cchill lofi focus\u201d, we used curator notes (focus lofi chill study coding Synthetic curator note: For focus sessio\u2026) to suggest Midnight Coding by LoRoom \u2014 mode=balanced; genre match (+2.0); mood match (+1.0); energy similarity (+1.44); acoustic bonus (+0.5); valence similarity (+0.48); diversity: duplicate genre (-0.5)",
+            "stream_url": "/media/track_2.wav"
+        }
+    ]
+}
+=== 4 GUARDRAIL (bad URL) ===
+{"ok":false,"reason":"Scheme 'javascript' is not allowed.","meta":{}}
+=== 5 EVALUATION HARNESS ===
+PASS  discover_chill                confidence=0.91 tools=['tool_guard_query', 'tool_retrieve', 'tool_rank', 'tool_focus_filter', 'tool_verify']
+PASS  discover_technical_tone       confidence=0.74 tools=['tool_guard_query', 'tool_retrieve', 'tool_rank', 'tool_focus_filter', 'tool_verify']
+PASS  url_guard                     Scheme 'javascript' is not allowed.
+PASS  tone_specialization           casual vs technical differ
+pytest: 15 passed, 0 failed
+cases: 4/4 passed
+=== 6 PYTEST ===
+...............                                                          [100%]
+15 passed in 0.05s

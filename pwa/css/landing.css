@@ -1,0 +1,120 @@
+/* JS Streaming Music — landing (separate from Shekinah sign-in pattern) */
+
+.landing {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: #12101a;
+  overflow: auto;
+}
+
+.landing-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(155, 93, 229, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 90%, rgba(245, 165, 36, 0.12), transparent 45%);
+  pointer-events: none;
+}
+
+.landing-card {
+  position: relative;
+  width: min(420px, 100%);
+  text-align: center;
+}
+
+.landing-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.landing-mark {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background: linear-gradient(145deg, #f5a524, #9b5de5);
+  color: #12101a;
+  box-shadow: 0 12px 40px rgba(155, 93, 229, 0.35);
+}
+
+.landing-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 255, 0.45);
+  margin-bottom: 0.35rem;
+}
+
+.landing-title {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: #f8f4ff;
+}
+
+.landing-lead {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(248, 244, 255, 0.72);
+  margin: 0 0 1.25rem;
+}
+
+.landing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.landing-features li {
+  font-size: 0.82rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(248, 244, 255, 0.85);
+}
+
+.landing-cta {
+  width: 100%;
+  font-size: 1.05rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.landing-foot {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.app-hidden {
+  visibility: hidden;
+}
+
+body.app-open .landing {
+  display: none;
+}
+
+body.app-open #app {
+  visibility: visible;
+}
+
+body.app-open #app[hidden] {
+  display: grid;
+}
+
+.sidebar-back {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+}

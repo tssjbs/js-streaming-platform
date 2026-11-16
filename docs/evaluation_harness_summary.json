@@ -1,0 +1,28 @@
+{
+  "harness_cases": [
+    {
+      "case": "discover_chill",
+      "status": "PASS",
+      "detail": "confidence=0.91 tools=['tool_guard_query', 'tool_retrieve', 'tool_rank', 'tool_focus_filter', 'tool_verify']"
+    },
+    {
+      "case": "discover_technical_tone",
+      "status": "PASS",
+      "detail": "confidence=0.74 tools=['tool_guard_query', 'tool_retrieve', 'tool_rank', 'tool_focus_filter', 'tool_verify']"
+    },
+    {
+      "case": "url_guard",
+      "status": "PASS",
+      "detail": "Scheme 'javascript' is not allowed."
+    },
+    {
+      "case": "tone_specialization",
+      "status": "PASS",
+      "detail": "casual vs technical differ"
+    }
+  ],
+  "pytest": {
+    "passed": 15,
+    "failed": 0
+  }
+}
